@@ -3,13 +3,7 @@ const db = require('../db');
 
 const Student = db.define("student", {
   
-  id: {
-    type:Sequelize.INTEGER,
-    autoIncrement:true,
-    primaryKey:true
-  },
-
-  firstName: {
+    firstName: {
     type: Sequelize.STRING,
     allowNull: false
   },
