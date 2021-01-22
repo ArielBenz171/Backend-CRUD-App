@@ -2,17 +2,21 @@ const express = require('express');
 const router = express.Router();
 const { student } = require('../database/models');
 
+// Write a route to serve up all students
 router.get('/', function(req, res, next) {
   student.findAll()
     .then(students => res.json(students))
     .catch(err => console.log(err))
 });
+
+// Write a route to serve up a single student (based on their id), _including that student's campus
 router.get('/:id', function(req,res,next){
   student.findByPk(req.params.id)
   .then(student => res.json(student))
   .catch(next)
 });
 
+// Write a route to add a new student
 router.post('/', async function(req, res, next){
   try{
     let student = await student.create(req.query);
@@ -23,6 +27,7 @@ router.post('/', async function(req, res, next){
   }
 });
 
+// Write a route to remove a student (based on their id)
 router.delete('/:id', async (req, res , next)=> {
   try{
     const deletedStudent = await student.destroy({
@@ -35,7 +40,7 @@ router.delete('/:id', async (req, res , next)=> {
     next(err);
   }});
 
-
+// Write a route to update a student (based on their id)
   router.put('/:id', async (req,res,next) =>{
     try{
       let newStudentInfo = await student.update(req.query, {
