@@ -2,7 +2,7 @@
 
 const Campus = require('./campus');
 const Student= require('./student');
-
+//const {Campus ,Student}= require('./campus','./student');
 const db = require('../db');
 db.sync({
   alter: true
