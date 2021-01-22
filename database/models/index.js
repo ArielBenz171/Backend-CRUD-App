@@ -3,7 +3,9 @@
 const Campus = require('./campus');
 const Student= require('./student');
 
+// Every campus has many students
 Campus.hasMany(student);
+// Every student has one campus
 Student.belongsTo(campus);
 
 module.exports = {
