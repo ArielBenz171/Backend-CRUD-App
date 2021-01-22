@@ -3,10 +3,15 @@
 const Campus = require('./campus');
 const Student= require('./student');
 
+const db = require('../db');
+db.sync({
+  alter: true
+});
+console.log("Hey arnold");
 // Every campus has many students
-Campus.hasMany(student);
+Campus.hasMany(Student);
 // Every student has one campus
-Student.belongsTo(campus);
+Student.belongsTo(Campus);
 
 module.exports = {
   Campus,
